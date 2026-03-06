@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Module</title>
+    <link rel="stylesheet" href="css/assignment.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <h2>Teacher Dashboard</h2>
+
+    <ul class="nav-menu">
+        <li><a href="dashboard.html">Home</a></li>
+
+        <li class="dropdown">
+            <a href="#">Students ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="student.html">Student List</a></li>
+                <li><a href="attendance.html">Attendance</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#">Academics ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="assignment.html">Assignments</a></li>
+                <li><a href="result.html">Results</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#">Communication ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="annousement.html">Announcements</a></li>
+                <li><a href="message.html">Messages</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<div class="assignment-container">
+
+    <h1>Assignment Module</h1>
+
+    <div class="dropdown-box">
+        <label>Select Assignment Type:</label>
+        <select>
+            <option>Choose Type</option>
+            <option>Theory Assignment</option>
+            <option>Practical Assignment</option>
+            <option>Project</option>
+            <option>Quiz</option>
+        </select>
+    </div>
+
+    <div class="assignment-list">
+
+        <div class="assignment-item">
+            <h2>Create Assignments</h2>
+            <p>Design and publish new assignments for students.</p>
+            <button>Create Assignment</button>
+        </div>
+
+        <div class="assignment-item">
+            <h2>Upload Materials</h2>
+            <p>Upload supporting materials for assignments.</p>
+            <button>Upload Files</button>
+        </div>
+
+        <div class="assignment-item">
+            <h2>View Submission Status</h2>
+            <p>Track student submissions and deadlines.</p>
+            <button>View Status</button>
+        </div>
+
+        <div class="assignment-item">
+            <h2>Grade Submissions</h2>
+            <p>Provide grades and feedback.</p>
+            <button>Grade</button>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

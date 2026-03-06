@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<div class="navbar">
+    <h2 class="logo">Teacher Dashboard</h2>
+
+    <ul class="nav-menu">
+        <li><a href="#">Home</a></li>
+
+        <li class="dropdown">
+            <a href="#">Students ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="student.html">Student List</a></li>
+                <li><a href="attendance.html">Attendance</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#">Academics ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="assignment.html">Assignments</a></li>
+                <li><a href="result.html">Results</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#">Communication ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="annousement.html">Announcements</a></li>
+                <li><a href="message.html">Messages</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <!-- Profile Dropdown -->
+    <div class="profile-dropdown">
+        <i class="fa-solid fa-user profile-icon"></i>
+
+        <div class="profile-menu">
+            <a href="profile.html">View Profile</a>
+            <a href="profile.html">Edit Profile</a>
+            <a href="#">Logout</a>
+        </div>
+    </div>
+</div>
+
+<!-- ================= DASHBOARD CARDS ================= -->
+<div class="dashboard-cards">
+
+    <div class="card">
+        <h3>Total Students</h3>
+        <p class="number">8</p>
+    </div>
+
+    <div class="card">
+        <h3>Assignments</h3>
+        <p>5 Pending</p>
+    </div>
+
+    <div class="card">
+        <h3>Results</h3>
+        <p>Updated</p>
+    </div>
+
+    <div class="card">
+        <h3>Attendance</h3>
+        <p>Average 76%</p>
+    </div>
+
+    <div class="card">
+        <h3>Messages</h3>
+        <p>3 New</p>
+    </div>
+
+</div>
+
+<!-- ================= STUDENT TABLE ================= -->
+<div class="table-container">
+    <table class="dashboard-table">
+        <thead>
+            <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Attendance</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>01</td>
+                <td>Vaishnavi Yadav</td>
+                <td>95%</td>
+                <td>vaishnavi@gmail.com</td>
+                <td class="active">Active</td>
+            </tr>
+            <tr>
+                <td>02</td>
+                <td>Rahul Sharma</td>
+                <td>82%</td>
+                <td>rahul@gmail.com</td>
+                <td class="active">Active</td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td>Anita Singh</td>
+                <td>60%</td>
+                <td>anita@gmail.com</td>
+                <td class="inactive">Low</td>
+            </tr>
+            <tr>
+                <td>04</td>
+                <td>Amit Kumar</td>
+                <td>88%</td>
+                <td>amit@gmail.com</td>
+                <td class="active">Active</td>
+            </tr>
+            <tr>
+                <td>05</td>
+                <td>Pooja Verma</td>
+                <td>72%</td>
+                <td>pooja@gmail.com</td>
+                <td class="active">Active</td>
+            </tr>
+            <tr>
+                <td>06</td>
+                <td>Sneha Patil</td>
+                <td>55%</td>
+                <td>sneha@gmail.com</td>
+                <td class="inactive">Low</td>
+            </tr>
+            <tr>
+                <td>07</td>
+                <td>Rohit Mehta</td>
+                <td>90%</td>
+                <td>rohit@gmail.com</td>
+                <td class="active">Active</td>
+            </tr>
+            <tr>
+                <td>08</td>
+                <td>Kavita Joshi</td>
+                <td>65%</td>
+                <td>kavita@gmail.com</td>
+                <td class="inactive">Low</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    
+
+let user = sessionStorage.getItem("user");
+
+if(!user){
+    window.location.href = "login.html";
+}
+
+function logout(){
+    sessionStorage.removeItem("user");
+    window.location.href = "login.html";
+}
+
+</script>
+
+
+</body>
+</html>

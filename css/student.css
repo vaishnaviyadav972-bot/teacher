@@ -1,0 +1,294 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ================= ANIMATED BACKGROUND ================= */
+body {
+    min-height: 100vh;
+    background: linear-gradient(270deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+    background-size: 800% 800%;
+    animation: gradientBG 20s ease infinite;
+    padding: 40px 20px;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.6);
+    padding: 16px 40px;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    position: relative;
+}
+
+.logo {
+    color: #fff;
+    font-size: 22px;
+}
+
+/* Nav Menu */
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-menu li {
+    position: relative;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: block;
+    transition: 0.3s;
+}
+
+.nav-menu a:hover {
+    background-color: #22c55e;
+}
+
+/* Dropdown */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 38px;
+    left: 0;
+    background-color: #fff;
+    min-width: 180px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.dropdown-menu a {
+    color: #1e293b;
+    padding: 10px 15px;
+}
+
+.dropdown-menu a:hover {
+    background-color: #e0f2fe;
+    color: #0284c7;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* ================= MAIN CONTAINER ================= */
+.container {
+    max-width: 1000px;
+    margin: 50px auto;
+    background-color: rgba(255,255,255,0.95);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* Header */
+.container h2 {
+    text-align: center;
+    color: #1e293b;
+    margin-bottom: 25px;
+}
+
+/* ================= FILTER BOX ================= */
+.filter-box {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.filter-box select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+}
+
+.filter-box button {
+    padding: 6px 10px;
+    background-color: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filter-box button:hover {
+    background-color: #1d4ed8;
+}
+
+/* ================= TABLE ================= */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 700px;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table th {
+    background: linear-gradient(90deg, #4f46e5, #6366f1);
+    color: white;
+    padding: 12px;
+}
+
+table td {
+    padding: 10px;
+    text-align: center;
+}
+
+table tr:nth-child(even) {
+    background-color: #f1f5f9;
+}
+
+/* ================= ACTION BUTTONS ================= */
+.edit {
+    background-color: #22c55e;
+    color: #fff;
+    border: none;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete {
+    background-color: #ef4444;
+    color: #fff;
+    border: none;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ================= FORM BOX ================= */
+.form-box {
+    border-top: 2px solid #4f46e5;
+    padding-top: 20px;
+    margin-top: 15px;
+}
+
+.form-box h3 {
+    color: #1e293b;
+    margin-bottom: 15px;
+}
+
+.form-box form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.form-box input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    font-size: 14px;
+}
+
+.form-box button {
+    grid-column: span 2;
+    width: 120px;
+    justify-self: start;
+    padding: 6px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-box button:hover {
+    background-color: #1d4ed8;
+}
+
+/* ================= HAMBURGER ================= */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width: 900px) {
+
+    .nav-menu {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: rgba(0,0,0,0.9);
+        width: 220px;
+        padding: 20px;
+        display: none;
+        border-radius: 12px;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .dropdown-menu {
+        position: static;
+        display: block;
+        background: rgba(255,255,255,0.1);
+        box-shadow: none;
+        margin-top: 5px;
+    }
+
+    .dropdown-menu a {
+        color: white;
+    }
+}
+
+@media(max-width: 600px) {
+
+    .container {
+        margin: 30px 10px;
+        padding: 20px;
+    }
+
+    .filter-box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-box form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-box button {
+        grid-column: span 1;
+        width: 100%;
+    }
+
+}

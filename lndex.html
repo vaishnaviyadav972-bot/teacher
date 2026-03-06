@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- IMPORTANT FOR MOBILE RESPONSIVE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login Page</title>
+    <link rel="stylesheet" href="css/Index.css">
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+
+    <!-- Action remove kelay -->
+    <form id="loginForm">
+
+        <div class="input-group">
+            <label>Username</label>
+            <input type="text"
+                   id="username"
+                   placeholder="Enter username"
+                   required
+                   minlength="4">
+        </div>
+
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password"
+                   id="password"
+                   placeholder="Enter password"
+                   required
+                   minlength="5">
+        </div>
+
+        <button type="submit">Login</button>
+        <p id="error" style="color:red; text-align:center;"></p>
+    </form>
+</div>
+
+<script>
+
+
+
+document.getElementById("loginForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    let username = document.getElementById("username").value.trim();
+    let password = document.getElementById("password").value.trim();
+
+    // Fakt empty nasel pahije
+    if(username !== "" && password !== ""){
+
+        // Session create
+        sessionStorage.setItem("user", username);
+
+        // Redirect
+        window.location.href = "dashboard.html";
+
+    } else {
+
+        document.getElementById("error").innerText = "Please fill all fields!";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>

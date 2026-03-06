@@ -1,0 +1,292 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+}
+
+body{
+min-height:100vh;
+background:linear-gradient(270deg,#f6d365,#fda085,#a1c4fd,#c2e9fb);
+background-size:800% 800%;
+animation:gradientBG 15s ease infinite;
+padding:40px 20px;
+}
+
+@keyframes gradientBG{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* NAVBAR */
+
+.navbar{
+position:sticky;
+top:0;
+background:rgba(0,0,0,0.6);
+padding:16px 45px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+backdrop-filter:blur(8px);
+border-radius:12px;
+z-index:1000;
+}
+
+.navbar h2{color:#fff;font-size:22px;}
+
+.nav-menu{
+list-style:none;
+display:flex;
+gap:25px;
+}
+
+.nav-menu li{position:relative;}
+
+.nav-menu a{
+color:#fff;
+text-decoration:none;
+padding:8px 12px;
+border-radius:6px;
+transition:0.3s;
+}
+
+.dropdown:hover>a{background:#22c55e;}
+
+.dropdown-menu{
+position:absolute;
+top:42px;
+left:0;
+background:#fff;
+min-width:180px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+padding:8px 0;
+opacity:0;
+visibility:hidden;
+transform:translateY(10px);
+transition:0.3s;
+}
+
+.dropdown:hover .dropdown-menu{
+opacity:1;
+visibility:visible;
+transform:translateY(0);
+}
+
+.dropdown-menu li a{
+display:block;
+padding:10px 15px;
+color:#1e293b;
+font-size:14px;
+}
+
+.dropdown-menu li a:hover{
+background:#e0f2fe;
+color:#0284c7;
+}
+
+/* MAIN */
+
+.container{
+width:90%;
+max-width:1100px;
+margin:60px auto;
+background:rgba(255,255,255,0.95);
+padding:30px;
+border-radius:20px;
+box-shadow:0 15px 35px rgba(0,0,0,0.2);
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+.container h2{text-align:center;color:#1e293b;}
+
+.controls{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.controls div{
+display:flex;
+flex-direction:column;
+}
+
+.controls select{
+padding:10px;
+border-radius:8px;
+border:1px solid #cbd5e1;
+}
+
+/* TABLE */
+
+.table-wrapper{
+overflow-x:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+min-width:600px;
+}
+
+table th{
+background:linear-gradient(90deg,#4f46e5,#6366f1);
+color:white;
+padding:12px;
+}
+
+table td{
+padding:10px;
+text-align:center;
+}
+
+table tr:nth-child(even){
+background:#f1f5f9;
+}
+
+table input,table select{
+padding:5px;
+border-radius:6px;
+border:1px solid #cbd5e1;
+}
+
+/* BUTTONS */
+
+.btn-group{
+display:flex;
+gap:15px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+button{
+padding:8px 16px;
+border-radius:8px;
+border:none;
+font-size:14px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button.save{background:#22c55e;color:white;}
+button.save:hover{transform:scale(1.05);background:#16a34a;}
+
+button.export{background:#4f46e5;color:white;}
+button.export:hover{transform:scale(1.05);background:#4338ca;}
+
+/* SUMMARY */
+
+.summary{
+border-top:2px solid #4f46e5;
+padding-top:15px;
+}
+
+.summary h3{
+color:#4f46e5;
+margin-bottom:8px;
+}
+
+/* MOBILE */
+
+.menu-toggle{
+display:none;
+font-size:24px;
+color:white;
+cursor:pointer;
+}
+
+@media(max-width:900px){
+
+.nav-menu{
+flex-direction:column;
+position:absolute;
+top:70px;
+right:0;
+background:rgba(0,0,0,0.9);
+width:220px;
+padding:20px;
+display:none;
+border-radius:12px;
+}
+
+.nav-menu.active{display:flex;}
+.menu-toggle{display:block;}
+
+.dropdown-menu{
+position:static;
+opacity:1;
+visibility:visible;
+transform:none;
+background:rgba(255,255,255,0.1);
+box-shadow:none;
+margin-top:5px;
+}
+
+.dropdown-menu li a{color:white;}
+}
+
+@media(max-width:600px){
+
+.container{
+padding:20px;
+margin:40px 10px;
+}
+
+}
+/* ===== EXTRA RESPONSIVE TABLE ===== */
+
+@media(max-width:768px){
+
+table{
+min-width:100%;
+}
+
+table thead{
+display:none;   /* Hide table header */
+}
+
+table, table tbody, table tr, table td{
+display:block;
+width:100%;
+}
+
+table tr{
+margin-bottom:15px;
+background:#f8fafc;
+padding:15px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+table td{
+text-align:left;
+padding:8px 5px;
+position:relative;
+padding-left:50%;
+}
+
+table td::before{
+position:absolute;
+left:10px;
+top:8px;
+font-weight:bold;
+color:#4f46e5;
+}
+
+/* Column Labels */
+table td:nth-child(1)::before{content:"Roll No";}
+table td:nth-child(2)::before{content:"Name";}
+table td:nth-child(3)::before{content:"Subject";}
+table td:nth-child(4)::before{content:"Marks";}
+table td:nth-child(5)::before{content:"Grade";}
+
+table input,
+table select{
+width:100%;
+}
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Result / Grade Module</title>
+<link rel="stylesheet" href="css/result.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <h2>Teacher Dashboard</h2>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <ul class="nav-menu" id="navMenu">
+        <li><a href="dashboard.html">Home</a></li>
+
+        <li class="dropdown">
+            <a href="#">Students ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="student.html">Student List</a></li>
+                <li><a href="attendance.html">Attendance</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#">Academics ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="assignment.html">Assignments</a></li>
+                <li><a href="result.html">Results</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#">Communication ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="annousement.html">Announcements</a></li>
+                <li><a href="message.html">Messages</a></li>
+            </ul>
+        </li>
+    </ul>
+</header>
+
+<main class="container">
+    <h2>Result / Grade Module</h2>
+
+    <div class="controls">
+        <div>
+            <label>Exam Name</label>
+            <select>
+                <option>Select Exam</option>
+                <option>Unit Test</option>
+                <option>Mid Semester</option>
+                <option>End Semester</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Class</label>
+            <select>
+                <option>Select Class</option>
+                <option>Computer Science</option>
+                <option>IT</option>
+                <option>Electronics</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>Marks</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody id="resultTable">
+            <tr>
+                <td>01</td>
+                <td>Vaishnavi Yadav</td>
+                <td>DBMS</td>
+                <td><input type="number" value="85"></td>
+                <td>
+                    <select>
+                        <option>A+</option><option selected>A</option>
+                        <option>B+</option><option>B</option>
+                        <option>C</option><option>Fail</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>02</td>
+                <td>Rahul Sharma</td>
+                <td>DBMS</td>
+                <td><input type="number" value="72"></td>
+                <td>
+                    <select>
+                        <option>A+</option><option>A</option>
+                        <option selected>B+</option><option>B</option>
+                        <option>C</option><option>Fail</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td>Anita Singh</td>
+                <td>DBMS</td>
+                <td><input type="number" value="65"></td>
+                <td>
+                    <select>
+                        <option>A+</option><option>A</option>
+                        <option>B+</option><option selected>B</option>
+                        <option>C</option><option>Fail</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <div class="btn-group">
+        <button class="save" onclick="calculateResult()">Save Results</button>
+        <button class="export">Export PDF</button>
+    </div>
+
+    <div class="summary">
+        <h3>Class Performance</h3>
+        <p>Total Students: <span id="totalStudents">0</span></p>
+        <p>Pass Percentage: <span id="passPercentage">0%</span></p>
+        <p>Highest Marks: <span id="highestMarks">0</span></p>
+    </div>
+</main>
+
+<script>
+function toggleMenu(){
+document.getElementById("navMenu").classList.toggle("active");
+}
+
+function calculateResult(){
+let rows=document.querySelectorAll("#resultTable tr");
+let total=rows.length;
+let pass=0;
+let highest=0;
+
+rows.forEach(row=>{
+let marks=Number(row.cells[3].querySelector("input").value);
+if(marks>=40) pass++;
+if(marks>highest) highest=marks;
+});
+
+document.getElementById("totalStudents").innerText=total;
+document.getElementById("passPercentage").innerText=((pass/total)*100).toFixed(2)+"%";
+document.getElementById("highestMarks").innerText=highest;
+}
+</script>
+
+</body>
+</html>

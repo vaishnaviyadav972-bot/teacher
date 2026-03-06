@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+
+<div class="profile-container">
+
+    <!-- View Section -->
+    <div class="profile-card">
+        <h2>Teacher Profile</h2>
+
+        <div class="profile-info">
+            <p><strong>Name:</strong> <span id="profileName">Vaishnavi Yadav</span></p>
+            <p><strong>Email:</strong> vaishnavi@gmail.com</p>
+            <p><strong>Phone:</strong> 9876543210</p>
+            <p><strong>Subject:</strong> Computer Science</p>
+        </div>
+
+        <button onclick="showEdit()">Edit Profile</button>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- Edit Section -->
+    <div class="edit-card" id="editSection" style="display:none;">
+        <h2>Edit Profile</h2>
+
+        <form onsubmit="saveChanges(event)">
+            <input type="text" id="editName" value="Vaishnavi Yadav">
+            <input type="email" value="vaishnavi@gmail.com">
+            <input type="text" value="9876543210">
+            <input type="text" value="Computer Science">
+
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+
+// ================= SESSION CHECK =================
+let user = sessionStorage.getItem("user");
+
+if(!user){
+    window.location.href = "lndex.html";
+} else {
+    document.getElementById("profileName").innerText = user;
+}
+
+// ================= SHOW EDIT =================
+function showEdit(){
+    document.getElementById("editSection").style.display = "block";
+}
+
+// ================= SAVE CHANGES =================
+function saveChanges(event){
+    event.preventDefault();
+
+    let newName = document.getElementById("editName").value;
+
+    // Update profile view
+    document.getElementById("profileName").innerText = newName;
+
+    // Update session name
+    sessionStorage.setItem("user", newName);
+
+    alert("Profile Updated Successfully!");
+}
+
+// ================= LOGOUT =================
+function logout(){
+
+    let confirmLogout = confirm("Are you sure you want to logout?");
+    
+    if(confirmLogout){
+        sessionStorage.removeItem("user");
+        window.location.href = "lndex.html";
+    }
+}
+
+</script>
+
+</body>
+</html>

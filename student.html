@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Module</title>
+    <link rel="stylesheet" href="css/student.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <h2 class="logo">Teacher Dashboard</h2>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <ul class="nav-menu" id="navMenu">
+        <li><a href="dashboard.html">Home</a></li>
+
+        <li class="dropdown">
+            <a href="#">Students ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="student.html">Student List</a></li>
+                <li><a href="attendance.html">Attendance</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#">Academics ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="assignment.html">Assignments</a></li>
+                <li><a href="result.html">Results</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#">Communication ▾</a>
+            <ul class="dropdown-menu">
+                <li><a href="annousement.html">Announcements</a></li>
+                <li><a href="message.html">Messages</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<!-- Main Container -->
+<div class="container">
+    <h2>Student Module</h2>
+
+    <div class="filter-box">
+        <select id="sortBy">
+            <option value="">Sort By</option>
+            <option value="roll">Roll No</option>
+            <option value="name">Name</option>
+        </select>
+        <button onclick="sortTable()">Apply</button>
+    </div>
+
+    <!-- Table Wrapper -->
+    <div class="table-wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="studentTable">
+            <tr>
+                <td>01</td>
+                <td>Vaishnavi Yadav</td>
+                <td>9876543210</td>
+                <td>vaishnavi@gmail.com</td>
+                <td>
+                    <button class="edit">Edit</button>
+                    <button class="delete">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>02</td>
+                <td>Rahul Sharma</td>
+                <td>9123456789</td>
+                <td>rahul@gmail.com</td>
+                <td>
+                    <button class="edit">Edit</button>
+                    <button class="delete">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td>Anita Singh</td>
+                <td>—</td>
+                <td>anita@gmail.com</td>
+                <td>
+                    <button class="edit">Edit</button>
+                    <button class="delete">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <!-- Form -->
+    <div class="form-box">
+        <h3>Add / Edit Student</h3>
+        <form>
+            <input type="text" placeholder="Roll No" required>
+            <input type="text" placeholder="Student Name" required>
+            <input type="text" placeholder="Contact (Optional)">
+            <input type="email" placeholder="Email" required>
+            <button type="submit">Save Student</button>
+        </form>
+    </div>
+</div>
+
+<script>
+function toggleMenu(){
+    document.getElementById("navMenu").classList.toggle("active");
+}
+
+function sortTable() {
+    let table = document.getElementById("studentTable");
+    let rows = Array.from(table.rows);
+    let sortBy = document.getElementById("sortBy").value;
+
+    if (sortBy === "") return;
+
+    let colIndex = sortBy === "roll" ? 0 : 1;
+
+    rows.sort((a, b) => {
+        let A = a.cells[colIndex].innerText.toLowerCase();
+        let B = b.cells[colIndex].innerText.toLowerCase();
+
+        return colIndex === 0 ? Number(A) - Number(B) : A.localeCompare(B);
+    });
+
+    rows.forEach(row => table.appendChild(row));
+}
+</script>
+
+</body>
+</html>

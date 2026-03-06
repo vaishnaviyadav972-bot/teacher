@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher Dashboard</title>
+<link rel="stylesheet" href="css/annousement.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+    <h2 class="logo">Teacher Dashboard</h2>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <nav>
+        <ul class="nav-menu" id="navMenu">
+
+            <li><a href="#">Home</a></li>
+
+            <li class="dropdown">
+                <a href="#">Students ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="student.html">Student List</a></li>
+                    <li><a href="attendance.html">Attendance</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#">Academics ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="assignment.html">Assignments</a></li>
+                    <li><a href="result.html">Results</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#">Communication ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="annousement.html">Announcements</a></li>
+                    <li><a href="message.html">Messages</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </nav>
+</header>
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main class="page-wrapper">
+
+<section class="announcement-module container">
+
+<div class="form-card">
+<h1 id="formHeading">Create Announcement</h1>
+
+<form id="announcementForm">
+
+<label>Title</label>
+<input type="text" id="title" required>
+
+<label>Description</label>
+<textarea id="description" required></textarea>
+
+<div class="form-row">
+<div>
+<label>Expiry Date</label>
+<input type="date" id="expiry">
+</div>
+
+<div class="checkbox">
+<input type="checkbox" id="visible">
+<label for="visible">Visible to Students</label>
+</div>
+</div>
+
+<button type="submit" class="btn-primary">Publish Announcement</button>
+</form>
+</div>
+
+<div class="list-card">
+<h2>Published Announcements</h2>
+
+<div id="announcementList">
+
+<div class="announcement-card">
+<h3>Welcome to the Semester</h3>
+<p>The new semester begins from January 15. Please check your timetable and assignments.</p>
+<div class="meta">
+<span>Expiry: 15 Feb 2026</span>
+<span class="badge">Visible</span>
+</div>
+<div class="actions">
+<button class="edit">Edit</button>
+<button class="delete">Delete</button>
+</div>
+</div>
+
+<div class="announcement-card">
+<h3>Maintenance Notice</h3>
+<p>The website will undergo maintenance on January 20 from 12:00 AM to 4:00 AM.</p>
+<div class="meta">
+<span>No Expiry</span>
+<span class="badge">Visible</span>
+</div>
+<div class="actions">
+<button class="edit">Edit</button>
+<button class="delete">Delete</button>
+</div>
+</div>
+
+</div>
+</div>
+
+</section>
+</main>
+
+<script>
+
+/* Mobile Menu */
+function toggleMenu(){
+document.getElementById("navMenu").classList.toggle("active");
+}
+
+/* Announcement Logic */
+
+let editCard = null;
+
+document.getElementById("announcementForm").addEventListener("submit",function(e){
+e.preventDefault();
+
+let title = document.getElementById("title").value;
+let desc = document.getElementById("description").value;
+let expiry = document.getElementById("expiry").value;
+let visible = document.getElementById("visible").checked;
+
+let expiryText = expiry ? "Expiry: " + expiry : "No Expiry";
+let badgeText = visible ? "Visible" : "Hidden";
+
+if(editCard){
+editCard.querySelector("h3").innerText = title;
+editCard.querySelector("p").innerText = desc;
+editCard.querySelector(".meta span").innerText = expiryText;
+editCard.querySelector(".badge").innerText = badgeText;
+
+editCard = null;
+document.getElementById("formHeading").innerText = "Create Announcement";
+}else{
+
+let newCard = document.createElement("div");
+newCard.className="announcement-card";
+newCard.innerHTML=`
+<h3>${title}</h3>
+<p>${desc}</p>
+<div class="meta">
+<span>${expiryText}</span>
+<span class="badge">${badgeText}</span>
+</div>
+<div class="actions">
+<button class="edit">Edit</button>
+<button class="delete">Delete</button>
+</div>
+`;
+
+document.getElementById("announcementList").appendChild(newCard);
+}
+
+this.reset();
+});
+
+document.addEventListener("click",function(e){
+
+if(e.target.classList.contains("edit")){
+editCard = e.target.closest(".announcement-card");
+
+document.getElementById("title").value =
+editCard.querySelector("h3").innerText;
+
+document.getElementById("description").value =
+editCard.querySelector("p").innerText;
+
+document.getElementById("formHeading").innerText="Edit Announcement";
+window.scrollTo({top:0,behavior:"smooth"});
+}
+
+if(e.target.classList.contains("delete")){
+e.target.closest(".announcement-card").remove();
+}
+
+});
+
+</script>
+
+</body>
+</html>

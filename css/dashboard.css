@@ -1,0 +1,227 @@
+/* ================= RESET ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+    background:#1e3c72;
+    color:white;
+    padding:15px 30px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:22px;
+}
+
+.nav-menu{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+
+.nav-menu li{
+    position:relative;
+}
+
+.nav-menu li a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+}
+
+/* ================= DROPDOWN ================= */
+.dropdown-menu{
+    display:none;
+    position:absolute;
+    background:white;
+    top:35px;
+    left:0;
+    min-width:160px;
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow:0 4px 8px rgba(0,0,0,0.1);
+}
+
+.dropdown-menu li{
+    padding:10px;
+}
+
+.dropdown-menu li a{
+    color:#1e3c72;
+    display:block;
+}
+
+.dropdown-menu li:hover{
+    background:#f1f1f1;
+}
+
+.dropdown:hover .dropdown-menu{
+    display:block;
+}
+
+/* ================= PROFILE ================= */
+.profile-dropdown{
+    position:relative;
+}
+
+.profile-icon{
+    font-size:18px;
+    cursor:pointer;
+    background:white;
+    color:#1e3c72;
+    padding:8px 12px;
+    border-radius:50%;
+}
+
+.profile-menu{
+    display:none;
+    position:absolute;
+    right:0;
+    top:40px;
+    background:white;
+    width:160px;
+    border-radius:6px;
+    box-shadow:0 4px 8px rgba(0,0,0,0.1);
+    overflow:hidden;
+}
+
+.profile-menu a{
+    display:block;
+    padding:10px;
+    text-decoration:none;
+    color:#1e3c72;
+}
+
+.profile-menu a:hover{
+    background:#f1f1f1;
+}
+
+.profile-dropdown:hover .profile-menu{
+    display:block;
+}
+
+/* ================= CARDS ================= */
+.dashboard-cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    padding:30px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.card h3{
+    margin-bottom:10px;
+    color:#1e3c72;
+}
+
+.number{
+    font-size:28px;
+    font-weight:bold;
+    color:#ff5722;
+}
+
+/* ================= TABLE ================= */
+.table-container{
+    padding:20px;
+    overflow-x:auto;
+}
+
+.dashboard-table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+.dashboard-table th,
+.dashboard-table td{
+    padding:12px;
+    border:1px solid #ddd;
+    text-align:center;
+}
+
+.dashboard-table th{
+    background:#1e3c72;
+    color:white;
+}
+
+.active{
+    color:green;
+    font-weight:bold;
+}
+
+.inactive{
+    color:red;
+    font-weight:bold;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+    .nav-menu{
+        display:none;
+    }
+}
+/* ================= RESPONSIVE TABLE ================= */
+
+@media(max-width:768px){
+
+.dashboard-table thead{
+    display:none;
+}
+
+.dashboard-table,
+.dashboard-table tbody,
+.dashboard-table tr,
+.dashboard-table td{
+    display:block;
+    width:100%;
+}
+
+.dashboard-table tr{
+    margin-bottom:15px;
+    background:#ffffff;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.dashboard-table td{
+    text-align:left;
+    padding:10px;
+    position:relative;
+    padding-left:50%;
+    border:none;
+    border-bottom:1px solid #eee;
+}
+
+.dashboard-table td:last-child{
+    border-bottom:none;
+}
+
+.dashboard-table td::before{
+    content:attr(data-label);
+    position:absolute;
+    left:10px;
+    top:10px;
+    font-weight:bold;
+    color:#1e3c72;
+}
+
+}

@@ -1,0 +1,77 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.profile-container{
+    width:90%;
+    max-width:500px;
+}
+
+.profile-card,
+.edit-card{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom:20px;
+}
+
+.profile-card h2,
+.edit-card h2{
+    margin-bottom:20px;
+    color:#1e3c72;
+}
+
+.profile-info p{
+    margin:10px 0;
+}
+
+button{
+    margin-top:15px;
+    padding:10px 20px;
+    border:none;
+    background:#1e3c72;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#16325c;
+}
+
+.edit-card{
+    display:none;
+}
+
+form input{
+    width:100%;
+    padding:10px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+.logout-btn{
+    margin-top:10px;
+    padding:10px 20px;
+    border:none;
+    background:#d9534f;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.logout-btn:hover{
+    background:#c9302c;
+}
