@@ -47,7 +47,7 @@
 let user = sessionStorage.getItem("user");
 
 if(!user){
-    window.location.href = "lndex.html";
+    window.location.href = "index.html";
 } else {
     document.getElementById("profileName").innerText = user;
 }
@@ -79,7 +79,7 @@ function logout(){
     
     if(confirmLogout){
         sessionStorage.removeItem("user");
-        window.location.href = "lndex.html";
+        window.location.href = "index.html";
     }
 }
 
